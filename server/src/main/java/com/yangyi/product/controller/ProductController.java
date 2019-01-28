@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 商品
- * Created by 廖师兄
- * 2017-12-09 21:13
+ * 说明(商品中心)
+ *
+ * @author yiyang
  */
 @RestController
 @RequestMapping("/product")
@@ -34,12 +34,13 @@ public class ProductController {
     private CategoryService categoryService;
 
     /**
+     * 说明(查询已上架商品)
      * 1. 查询所有在架的商品
      * 2. 获取类目type列表
      * 3. 查询类目
      * 4. 构造数据
      */
-    @GetMapping("/list")
+    @GetMapping("/uplist")
     public ResultVO<ProductVO> list() {
         //1. 查询所有在架的商品
         List<ProductInfo> productInfoList = productService.findUpAll();
@@ -75,7 +76,7 @@ public class ProductController {
     }
 
     /**
-     * 获取商品列表(给订单服务用的)
+     * 从商品id获取商品列表(给订单服务用的)
      *
      * @param productIdList
      * @return
@@ -93,5 +94,7 @@ public class ProductController {
     @PostMapping("/decreaseStock")
     public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
         productService.decreaseStock(decreaseStockInputList);
+
+
     }
 }

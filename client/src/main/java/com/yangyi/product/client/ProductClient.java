@@ -9,15 +9,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 /**
- * Created by 廖师兄
- * 2017-12-10 21:04
+ * 对外暴露
+ *
+ * @author yiyang
  */
 @FeignClient(name = "product")
 public interface ProductClient {
 
+    /**
+     * 商品列表
+     *
+     * @param productIdList
+     * @return
+     */
     @PostMapping("/product/listForOrder")
     List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList);
 
+    /**
+     * 减库存
+     *
+     * @param decreaseStockInputList
+     */
     @PostMapping("/product/decreaseStock")
     void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList);
 }

@@ -84,6 +84,7 @@ public class ProductServiceImpl implements ProductService {
             productInfoRepository.save(productInfo);
             productInfoList.add(productInfo);
         }
+
         return productInfoList;
     }
 }
